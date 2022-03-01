@@ -1,0 +1,60 @@
+// Online C++ compiler to run C++ program online
+// an integer N is to be divided/created into P1 and P2 such that P1 and P2 contain digits from N and p1+p2 has the minimum sum. Amazon Online assessment practice
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    // Write C++ code here
+    long N =4931;
+    int digits = log10(N)+1;
+//    cout << digits;
+    vector<int> numbers;
+    
+    for(int i=0; i<digits;i++){
+        numbers.push_back(N%10);
+        N=N/10;
+    }
+    sort(numbers.begin(),numbers.end());
+    for (int x : numbers){
+        cout << x << " ";
+    }
+    cout << "\n";
+    if(digits%2 != 0){
+        int num1 = numbers[0];
+        int num2 = numbers[1];
+        for(int i=digits/2; i>0;i--){
+            num1=num1*10;
+            num1= num1 + numbers[digits-i];
+        }
+        for(int i =2; i<1+digits/2;i++){
+            num2=num2*10;
+            num2=num2+ numbers[i];
+        }
+           cout << num1;
+           cout << "\n";
+           cout << num2;
+           cout << "\n";
+           cout << num1 + num2;
+    }else{
+        int num1 = numbers[0];
+        int num2 = numbers[1];
+        for(int i=digits/2 - 1; i>0;i--){
+            num1=num1*10;
+            num1= num1 + numbers[digits-i];
+        }
+        for(int i =2; i<1+digits/2;i++){
+            num2=num2*10;
+            num2=num2+ numbers[i];
+        }
+           cout << num1;
+           cout << "\n";
+           cout << num2;
+           cout << "\n";
+           cout << num1 + num2;
+    }
+ 
+    return 0;
+}
