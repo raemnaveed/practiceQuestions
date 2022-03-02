@@ -1,0 +1,32 @@
+// Online C++ compiler to run C++ program online
+// for array A, make it so that it always A[i]<=A[i+k]. Minimum operations required to do this is the solution.
+#include <iostream>
+#include <malloc.h>
+#include <stdbool.h>
+using namespace std;
+
+int mini(int N, int* A, int K){
+    int sum = 0;
+    for(int i=0;i<N-K;i++){
+        if(A[i] > A[i+K]){
+            A[i]=A[i+K];
+            sum = sum+1;
+        }
+    }
+    return sum;
+}
+
+int main() {
+    // Write C++ code here
+    int N = 8;
+    int A[N] = {9,6,10,7,7,15,8,12};
+    int K = 3;
+    
+    int out = mini(N, A, K);
+    for (int i = 0; i < N; i++){
+    cout << A[i];
+    }
+    cout << "\n"<<out;
+
+    return 0;
+}
